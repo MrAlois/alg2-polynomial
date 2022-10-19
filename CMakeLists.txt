@@ -3,4 +3,4 @@ project(alg2_polynomial)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(alg2_polynomial main.cpp)
+add_executable(alg2_polynomial main.cpp Polynomial.cpp Polynomial.h VectorUtils.h)
