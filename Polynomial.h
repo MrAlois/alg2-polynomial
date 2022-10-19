@@ -12,6 +12,9 @@ private:
     std::vector<double> coefficients;
 
 public:
+    [[nodiscard]] const std::vector<double> &getCoefficients() const;
+
+public:
     Polynomial();
     explicit Polynomial(std::vector<double> data);
     Polynomial(std::initializer_list<double> args);
@@ -19,8 +22,6 @@ public:
     unsigned int degree();
     double calculate(double x0);
     Polynomial operator+(Polynomial other);
-
-    void print();
 };
 
 

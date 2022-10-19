@@ -6,7 +6,7 @@
 #include <utility>
 #include <cmath>
 #include "Polynomial.h"
-#include "VectorUtils.h"
+#include "PolynomialUtils.h"
 
 
 Polynomial::Polynomial() {
@@ -15,10 +15,12 @@ Polynomial::Polynomial() {
 
 Polynomial::Polynomial(std::initializer_list<double> args) {
     this->coefficients = args;
+    std::reverse(this->coefficients.begin(), this->coefficients.end());
 }
 
 Polynomial::Polynomial(std::vector<double> data) {
     this->coefficients = std::move(data);
+//    std::reverse(this->coefficients.begin(), this->coefficients.end());
 }
 
 unsigned int Polynomial::degree() {
@@ -27,12 +29,8 @@ unsigned int Polynomial::degree() {
 
 double Polynomial::calculate(double x) {
     double result = 0;
-    for(unsigned int i = 0; i < degree(); ++i){
-        auto ult = this->coefficients.at(i) * pow(x, degree() - i - 1);
-        std::cout << ult << std::endl;
-        result += ult;
-    }
-
+    for(unsigned int i = 0; i < degree(); ++i)
+        result += this->coefficients.at(i) * pow(x, degree() - i - 1);
 
     return result;
 }
@@ -52,19 +50,8 @@ Polynomial Polynomial::operator+(Polynomial other) {
     return Polynomial(result);
 }
 
-void Polynomial::print() {
-    std::cout << "P(x) = ";
-    for(unsigned i = 0; i < coefficients.size(); ++i){
-        const auto& c = coefficients[i];
-        if(c == 0) continue;
-        if(i != 0) std::cout << " + ";
-
-        auto power = coefficients.size() - i - 1;
-
-        if(c != 1)      std::cout << c;
-        if(power != 0)  std::cout << "x^" << power;
-    }
-    std::cout << std::endl;
+const std::vector<double> &Polynomial::getCoefficients() const {
+    return coefficients;
 }
 
 
