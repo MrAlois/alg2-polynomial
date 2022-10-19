@@ -13,14 +13,14 @@ private:
 
 public:
     [[nodiscard]] const std::vector<double> &getCoefficients() const;
+    [[nodiscard]] unsigned int getPolynomialDegree() const;
 
 public:
     Polynomial();
     explicit Polynomial(std::vector<double> data);
     Polynomial(std::initializer_list<double> args);
 
-    unsigned int degree();
-    double calculate(double x0);
+    double solve(double x0);
     Polynomial operator+(Polynomial other);
 };
 

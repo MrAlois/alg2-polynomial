@@ -3,14 +3,14 @@
 #include "PolynomialUtils.h"
 
 int main(){
-    Polynomial A{4, 5, -1, 7, 0, 3};
-    Polynomial B{0.8, 10, 1, 3, 0};
+    Polynomial P{4, 5, -1, 7, 0, 3};
+    PolynomialUtils::print(P, 5);
 
-    PolynomialUtils::print(A);
-    PolynomialUtils::print(B);
+    Polynomial Q{-3, 1, 0, -1, 0, 0, 4};
+    PolynomialUtils::print(Q);
 
-    auto C = A + B;
-    PolynomialUtils::print(C);
+    Polynomial R = P + Q;
+    PolynomialUtils::print(R);
 
     return 0;
 }
